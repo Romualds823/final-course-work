@@ -8,15 +8,16 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class BaseFunc {
     private WebDriver browser;
-    private WebDriverWait waitOne;
+    private WebDriverWait wait;
 
     public BaseFunc(){
         browser = new ChromeDriver();
         browser.manage().window().maximize();
-        waitOne = new WebDriverWait(browser, Duration.ofSeconds(3));
+        wait = new WebDriverWait(browser, Duration.ofSeconds(3));
 
 
     }
@@ -32,7 +33,22 @@ public class BaseFunc {
 
     }
     public void click(By locator){
-    waitOne.until(ExpectedConditions.elementToBeClickable(locator)).click();
+    wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
+
+
 
     }
-}
+    public WebElement findElement(By locator){
+        return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+    }
+    public List<WebElement> findElements(By locator){
+        return browser.findElements(locator);
+    }
+
+
+
+    }
+
+
+
+

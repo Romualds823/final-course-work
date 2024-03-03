@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -12,7 +13,6 @@ import java.time.Duration;
 import java.util.List;
 
 public class SportsdirectTests {
-    private WebDriver browser;
     private final By ACCEPT_COOKIES_BUTTON = By.id("onetrust-accept-btn-handler");
     private final By KIDS_MENU_BTN = By.xpath(".//div[@title = 'Kids']");
     private final By CLICK_HOODIES = By.xpath(".//a[contains(@href, '/kids/clothing/hoodies')]");
@@ -24,8 +24,8 @@ public class SportsdirectTests {
         browser.manage().window().maximize();
         browser.get("https://lv.sportsdirect.com");
 
-        WebDriverWait waitOne = new WebDriverWait(browser, Duration.ofSeconds(3));
-        waitOne.until(ExpectedConditions.presenceOfElementLocated(ACCEPT_COOKIES_BUTTON));
+        WebDriverWait wait = new WebDriverWait(browser, Duration.ofSeconds(3));
+        wait.until(ExpectedConditions.presenceOfElementLocated(ACCEPT_COOKIES_BUTTON));
 
         WebElement acceptBtn = browser.findElement(ACCEPT_COOKIES_BUTTON);
         acceptBtn.click();
@@ -36,22 +36,23 @@ public class SportsdirectTests {
         WebElement hoodiesBtn = browser.findElement(CLICK_HOODIES);
         hoodiesBtn.click();
 
-        //boolean isSectionFound = false;
+
+        WebElement menuBlock = browser.findElement(CLICK_HOODIES);
+        List<WebElement> menuItems = menuBlock.findElements(KIDS_MENU_BTN);
 
 
-//        WebElement menuBlock = browser.findElement(CLICK_HOODIES);
-//        List<WebElement> menuItems = browser.findElements(KIDS_MENU_BTN);
-
-
+//        boolean isSectionFound = false;
 //        for (WebElement we : menuItems) {
 //            System.out.println(we.getText());
 //            if (we.getText().equals(SECTION)) {
+//                wait.until(ExpectedConditions.elementToBeClickable(we));
+//                isSectionFound = true;
 //                we.click();
 //                break;
 //            }
-        }
-
-
+//        }
+//        Assertions.assertTrue(isSectionFound,"Section not found!");
+    }
     }
 
 
