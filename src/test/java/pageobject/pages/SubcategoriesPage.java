@@ -2,10 +2,12 @@ package pageobject.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import pageobject.BaseFunc;
 
 public class SubcategoriesPage {
     private final By SUBCATEGORY_NAME = By.xpath(".//div[contains(@class, 'swiper-slide swiper-slide-visible')]");
+    private final By ITEM = By.id("sdlv_53930103");
     private BaseFunc baseFunc;
 
     public SubcategoriesPage(BaseFunc baseFunc) {
@@ -20,4 +22,5 @@ public class SubcategoriesPage {
             }
         }
     }
+
 }

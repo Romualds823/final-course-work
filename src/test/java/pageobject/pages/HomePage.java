@@ -12,6 +12,7 @@ public class HomePage {
     private final By ACCEPT_COOKIES_BUTTON = By.id("onetrust-accept-btn-handler");
     private final By MENU_ITEM = By.xpath(".//div[@CLASS = 'swiper-wrapper']");
     private final By MENU_KIDS = By.xpath(".//a[@href = '/kids']");
+    private final By ITEM = By.id("sdlv_53930103");
     private BaseFunc baseFunc;
 
 
@@ -24,6 +25,8 @@ public class HomePage {
     public void acceptCookies()  {
         baseFunc.click(ACCEPT_COOKIES_BUTTON);
     }
+
+
 
 
 
@@ -40,6 +43,10 @@ public class HomePage {
             }
         }
         Assertions.assertTrue(isSectionFound,"Can't find menu item"+menuItemName);
+    }
+
+    public void clickItem() {
+        baseFunc.click(ITEM);
     }
 
 }
